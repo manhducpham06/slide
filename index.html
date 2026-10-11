@@ -416,6 +416,166 @@ h2{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-sp
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .blob{animation:none!important}
 }
+
+/* ================= EXTRA SLIDES ================= */
+.rise-in{animation:rise .5s both cubic-bezier(.2,.85,.2,1)}
+.cstat{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--a2)}
+
+/* eye */
+.eyegrid,.sumgrid,.radgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,4vw,48px);align-items:center}
+.eyebox{width:min(100%,420px);justify-self:center;aspect-ratio:1}
+#eyeSvg{width:100%;height:100%;overflow:visible;--ec1:#ff2e93;--ec2:#ffd23f;filter:drop-shadow(0 0 28px var(--ec1))}
+#eyeSvg.lv2{--ec1:#7a3cff;--ec2:#19f0ff}
+#eyeSvg.lv3{--ec1:#ff2e3a;--ec2:#ffffff}
+#eyeSvg .eglow{fill:rgba(255,255,255,.07);stroke-width:1;stroke-dasharray:2 4;stroke:var(--ec1)}
+#eyeSvg .irisw{transform-box:fill-box;transform-origin:center;animation:blinkE 6s infinite}
+@keyframes blinkE{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.06)}}
+#eyeSvg .mk{fill:var(--ec2);filter:drop-shadow(0 0 3px var(--ec2))}
+
+/* sword dance */
+.sS{touch-action:none;user-select:none;-webkit-user-select:none;cursor:crosshair}
+.sS .wrap{text-align:center;justify-items:center;align-content:center;pointer-events:none}
+.sS h2{font-size:clamp(2.4rem,8vw,6rem)}
+.swscore{font-family:var(--display);font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;color:var(--gold);text-shadow:0 0 18px var(--gold);font-variant-numeric:tabular-nums}
+
+/* reflex */
+.arena{position:relative;width:100%;max-width:900px;aspect-ratio:16/8;min-height:260px;justify-self:center;border:1px solid rgba(255,255,255,.2);
+  background:radial-gradient(circle at 50% 50%,rgba(122,60,255,.25),rgba(7,4,15,.7));overflow:hidden;cursor:crosshair;
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+.tg{position:absolute;width:64px;height:64px;padding:0;border:0;background:none;transform:translate(-50%,-50%);cursor:pointer;touch-action:manipulation}
+.tg b{position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle,#fff,var(--a1));box-shadow:0 0 18px var(--a1)}
+.tg-ring{position:absolute;inset:0;border-radius:50%;border:3px solid var(--a2);box-shadow:0 0 12px var(--a2);animation:tgRing 1.1s linear forwards}
+@keyframes tgRing{from{transform:scale(3.4);opacity:.15}to{transform:scale(1);opacity:1}}
+.tg.out{animation:tgOut .3s forwards;pointer-events:none}
+@keyframes tgOut{to{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+.rfpop{position:absolute;font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;pointer-events:none;animation:dmg 1s forwards;text-shadow:0 0 12px currentColor;white-space:nowrap}
+.rfres{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center;gap:6px;background:rgba(7,4,15,.84);z-index:2}
+.rfres b{font-family:var(--display);font-weight:400;font-size:clamp(5rem,16vw,9rem);line-height:1;color:var(--gold);text-shadow:0 0 30px var(--gold);transform:skewX(-8deg)}
+
+/* summon */
+.portal{position:relative;width:min(100%,340px);aspect-ratio:1;justify-self:center}
+.pr{position:absolute;border-radius:50%;inset:0;border:3px solid transparent}
+.p1{border-top-color:var(--a1);border-bottom-color:var(--a2);animation:spin 6s linear infinite;box-shadow:0 0 30px var(--a1)}
+.p2{inset:12%;border-left-color:var(--gold);border-right-color:var(--violet);animation:spin 4s linear infinite reverse}
+.p3{inset:24%;border:2px dashed rgba(255,255,255,.6);animation:spin 9s linear infinite}
+.pcore{position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle,#fff,var(--a1) 40%,transparent 72%);animation:breathe 3s infinite}
+.portal.charging .p1{animation-duration:.5s}
+.portal.charging .p2{animation-duration:.35s}
+.portal.charging .p3{animation-duration:.7s}
+.portal.charging .pcore{animation:pcharge 1.3s forwards}
+@keyframes pcharge{to{transform:scale(2.4);filter:brightness(2)}}
+.cardslot{position:relative;display:grid;place-items:center;min-height:320px;perspective:1000px}
+.sempty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--mute);padding:16px}
+.sempty[hidden]{display:none}
+.scard{width:min(100%,240px);aspect-ratio:3/4;opacity:0;transform:scale(.6);transition:opacity .4s,transform .5s cubic-bezier(.3,1.5,.5,1);--rc:#4aa8ff}
+.scard.show{opacity:1;transform:none;filter:drop-shadow(0 0 22px var(--rc))}
+.scard.r-SR{--rc:#b46bff}
+.scard.r-SSR{--rc:#ffd23f}
+.sin{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.3,1.2,.4,1)}
+.scard.flipped .sin{transform:rotateY(180deg)}
+.sface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;align-content:center;gap:8px;text-align:center;padding:16px;
+  border:2px solid var(--rc);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.sback{background:repeating-conic-gradient(from 0deg,#1b0b33 0 8deg,#2a1250 8deg 16deg);font-size:3.4rem;color:var(--rc)}
+.sfront{transform:rotateY(180deg);background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--rc) 55%,#fff),var(--rc) 25%,#12031f 82%)}
+.sfront svg{width:44%;fill:#fff;filter:drop-shadow(0 0 10px var(--rc))}
+.sfront h3{font-family:var(--display);font-weight:400;font-size:1.6rem;letter-spacing:.05em;text-transform:uppercase}
+.sfront p{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85}
+.sfront .stars{color:#fff;letter-spacing:.2em;text-shadow:0 0 10px #fff}
+.sfront .rar{font-family:var(--display);font-size:1.2rem;color:#12031f;background:#fff;padding:0 .7em;transform:skewX(-10deg)}
+.hist{display:flex;flex-wrap:wrap;gap:6px;min-height:28px}
+.hist span{font-family:var(--mono);font-size:.7rem;padding:.2em .8em;border:1px solid currentColor;transform:skewX(-10deg);letter-spacing:.1em}
+
+/* radar */
+.radar{position:relative;width:min(100%,440px);aspect-ratio:1;justify-self:center;border-radius:50%;
+  background:radial-gradient(circle,rgba(25,240,255,.12),rgba(7,4,15,.8) 70%);border:2px solid var(--a2);
+  box-shadow:0 0 40px color-mix(in srgb,var(--a2) 35%,transparent),inset 0 0 40px rgba(25,240,255,.15);overflow:hidden}
+.radar .rg{position:absolute;inset:0;width:100%;height:100%}
+.radar .rg *{fill:none;stroke:color-mix(in srgb,var(--a2) 50%,transparent);stroke-width:.3}
+.sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from -80deg,transparent 0deg,color-mix(in srgb,var(--a2) 55%,transparent) 80deg,transparent 80.4deg);will-change:transform}
+.blip{position:absolute;width:18px;height:18px;border-radius:50%;border:0;padding:0;background:var(--c,#19f0ff);box-shadow:0 0 12px var(--c,#19f0ff);
+  transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none}
+.blip.ok{--c:#19f0ff}
+.blip.bad{--c:#ff4a5a}
+.blip.seen{opacity:.4;transform:translate(-50%,-50%) scale(1);pointer-events:auto;cursor:pointer}
+.blip.ping{animation:blipPing 1.2s}
+@keyframes blipPing{0%{opacity:1;transform:translate(-50%,-50%) scale(2.4)}100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}}
+.blip.sel{opacity:1;outline:2px solid var(--gold);outline-offset:4px}
+.sigInfo{min-height:4.5em;padding:14px 18px;border-left:4px solid var(--a2);background:linear-gradient(90deg,rgba(255,255,255,.07),transparent);font-family:var(--mono);font-size:.85rem;line-height:1.6}
+.sigInfo b{color:var(--gold)}
+.sigInfo .bad{color:#ff6b7a}
+
+/* manga */
+.mpage{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:repeat(3,minmax(130px,17vh));gap:10px;
+  grid-template-areas:"a a b" "c d b" "c e e";background:#fff;padding:10px;box-shadow:0 0 50px rgba(255,255,255,.2);transform:rotate(-.6deg)}
+.panel{position:relative;overflow:hidden;cursor:pointer;color:#12031f;background:#12031f;min-width:0;opacity:1}
+.slide.active .panel{animation:slam .5s var(--d,0s) both cubic-bezier(.2,1.2,.3,1)}
+@keyframes slam{0%{opacity:0;transform:scale(1.8) rotate(var(--rot,0deg))}60%{opacity:1;transform:scale(.96)}100%{opacity:1;transform:none}}
+.slide.active .panel.shk{animation:pshake .35s both}
+@keyframes pshake{0%{transform:translate(0,0) scale(1.04);filter:brightness(2)}25%{transform:translate(-6px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,2px)}100%{transform:none;filter:none}}
+.pin{position:absolute;inset:0;overflow:hidden}
+.pin::before{content:"";position:absolute;inset:-30%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.16) 0 3deg,transparent 3deg 9deg)}
+.pa{background:radial-gradient(circle at 70% 60%,#4b1a8f,#12031f 70%)}
+.pb{background:radial-gradient(circle at 50% 55%,#ff5fb0,#a01868 60%,#2a0a3a)}
+.pc{background:linear-gradient(135deg,#0c3b52,#12031f 70%)}
+.pd{background:radial-gradient(circle at 40% 50%,#ffe27a,#c28a00 60%,#2a1a00)}
+.pe{background:radial-gradient(circle at 50% 50%,#7a0e1c,#12031f 75%)}
+.mfig{position:absolute;left:50%;top:52%;width:min(58%,150px);height:auto;translate:-50% -50%;fill:#fff;filter:drop-shadow(0 0 10px rgba(255,255,255,.6))}
+.mfig.sl{width:92%;fill:none}
+.mfig.eye{width:70%}
+.sfx{position:absolute;font-family:var(--jp);font-weight:900;font-size:clamp(1.8rem,5vw,4rem);line-height:1;color:#fff;-webkit-text-stroke:2px #12031f;paint-order:stroke fill;text-shadow:4px 4px 0 var(--a1);transform:rotate(-6deg);z-index:2}
+.cap{position:absolute;z-index:2;background:#fff1a8;color:#12031f;font-weight:700;font-size:clamp(.72rem,1.3vw,.95rem);padding:.3em .8em;border:2px solid #12031f;max-width:80%}
+.bub{position:absolute;z-index:2;background:#fff;color:#12031f;font-weight:700;font-size:clamp(.72rem,1.3vw,.95rem);padding:.5em .9em;border:2px solid #12031f;border-radius:14px;max-width:70%}
+
+/* quiz */
+.quiz{max-width:760px;width:100%;justify-self:center;display:grid;gap:16px}
+.qprog{height:4px;background:rgba(255,255,255,.18)}
+.qprog i{display:block;height:100%;background:linear-gradient(90deg,var(--a1),var(--gold));transition:width .4s}
+.qq{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.2rem);text-transform:uppercase;letter-spacing:.03em;line-height:1.1}
+.qa{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.qb{text-align:left;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);padding:14px 18px;min-width:0;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);transition:background .2s,transform .2s}
+.qb:hover{background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 60%,transparent),color-mix(in srgb,var(--violet) 40%,transparent));transform:translateY(-3px)}
+.qres{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.qres .qart{width:clamp(110px,22vw,190px);aspect-ratio:3/4;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,color-mix(in srgb,var(--c) 70%,#fff),var(--c) 28%,#12031f 80%);box-shadow:0 0 40px var(--c)}
+.qres svg{width:55%;fill:#fff;filter:drop-shadow(0 0 12px var(--c))}
+.qres h3{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:.04em;color:var(--c)}
+.qres p{color:var(--mute);margin:.4em 0 1em}
+
+/* rank race */
+.race{position:relative;height:calc(var(--rh,52px)*6);max-width:900px;width:100%;justify-self:center}
+.rk{position:absolute;left:0;right:0;top:0;height:calc(var(--rh,52px) - 8px);display:grid;grid-template-columns:clamp(88px,16vw,170px) minmax(0,1fr);align-items:center;gap:12px;
+  transition:transform .8s cubic-bezier(.3,1,.4,1)}
+.rk .nm{font-family:var(--display);font-size:clamp(1rem,2.4vw,1.5rem);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rk .tr{position:relative;height:100%;background:rgba(255,255,255,.06)}
+.rk .bar3{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 40%,#fff));
+  transition:width .8s cubic-bezier(.3,1,.4,1);clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:0 0 18px var(--c)}
+.rk .vl{position:absolute;right:8px;top:50%;translate:0 -50%;font-family:var(--mono);font-weight:700;font-size:.85rem;font-variant-numeric:tabular-nums}
+.rk.lead .nm{color:var(--gold);text-shadow:0 0 14px var(--gold)}
+.rkhead{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;max-width:900px;width:100%;justify-self:center}
+
+/* countdown */
+.units{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,2vw,24px);max-width:900px;width:100%;justify-self:center}
+.cu{position:relative;aspect-ratio:1;display:grid;place-items:center;align-content:center}
+.cu svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.cu .trk{fill:none;stroke:rgba(255,255,255,.12);stroke-width:5}
+.cu .bar{fill:none;stroke:url(#gg);stroke-width:5;stroke-linecap:round;stroke-dasharray:276.5;stroke-dashoffset:276.5;filter:drop-shadow(0 0 5px var(--a2));transition:stroke-dashoffset .6s}
+.cu b{font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,4.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.cu b.flip{animation:flipN .4s}
+@keyframes flipN{0%{transform:rotateX(90deg);opacity:0}100%{transform:none;opacity:1}}
+.cu span{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.miles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:900px;width:100%;justify-self:center}
+.mi{border-left:3px solid var(--a1);padding:6px 14px;background:linear-gradient(90deg,rgba(255,255,255,.07),transparent);font-size:.92rem}
+.mi .mono{color:var(--gold)}
+
+/* extra responsive */
+@media (max-width:860px){.eyegrid,.sumgrid,.radgrid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){
+  .mpage{grid-template-columns:minmax(0,1fr);grid-template-areas:"a" "b" "c" "d" "e";grid-template-rows:none;grid-auto-rows:minmax(150px,auto)}
+  .mpage .panel{grid-area:auto!important}
+  .miles{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){.qa,.qres{grid-template-columns:minmax(0,1fr)}.units{gap:8px}}
+
 [hidden]{display:none!important}
 img{max-width:100%}
 </style>
@@ -543,6 +703,37 @@ img{max-width:100%}
     </div>
   </section>
 
+  <!-- EYE -->
+  <section class="slide sE" data-id="eye" data-a1="#ff2e3a" data-a2="#ffd23f" data-label="Tinh Nhãn" aria-label="Tinh Nhãn">
+    <div class="kanji par" style="--p:20;right:-1%;bottom:4%;font-size:clamp(9rem,28vw,22rem)" aria-hidden="true">眼</div>
+    <div class="wrap">
+      <span class="tag rise">Awakening · Tinh Nhãn</span>
+      <h2 class="rise" style="--d:.1s">Con mắt<br>nhìn thấu sao</h2>
+      <div class="eyegrid">
+        <div class="eyebox rise" style="--d:.25s">
+          <svg id="eyeSvg" class="lv1" viewBox="0 0 200 200" role="img" aria-label="Con mắt Tinh Nhãn nhìn theo con trỏ">
+            <defs>
+              <radialGradient id="eIris" cx=".5" cy=".5" r=".5"><stop offset="0" style="stop-color:var(--ec2)"/><stop offset=".7" style="stop-color:var(--ec1)"/><stop offset="1" stop-color="#12031f"/></radialGradient>
+            </defs>
+            <circle class="eglow" cx="100" cy="100" r="96"/>
+            <g class="irisw">
+              <circle cx="100" cy="100" r="72" fill="url(#eIris)" style="stroke:var(--ec1)" stroke-width="2"/>
+              <circle cx="100" cy="100" r="58" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-dasharray="3 5"/>
+              <circle cx="100" cy="100" r="46" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/>
+              <g id="marks"></g>
+              <g id="pupilG"><circle cx="100" cy="100" r="17" fill="#07040f"/><circle cx="94" cy="94" r="4" fill="#fff" opacity=".85"/></g>
+            </g>
+          </svg>
+        </div>
+        <div class="bpanel rise" style="--d:.4s">
+          <div class="bpm" id="eyeLv" style="font-size:clamp(1.6rem,4vw,2.6rem)">Cấp 1 · Đơn Tinh</div>
+          <p class="lead">Tinh Nhãn cho phép nhìn thấy dòng chảy ánh sáng của mọi vì sao. Mỗi lần thức tỉnh, thêm hai ngôi sao xuất hiện trong con ngươi. Di chuyển chuột để con mắt nhìn theo bạn.</p>
+          <div class="row"><button class="btn alt" id="eyeBtn">✦ Thức tỉnh</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 8 · SKILLS -->
   <section class="slide s6" data-id="skills" data-a1="#7a3cff" data-a2="#19f0ff" data-label="Kỹ năng" aria-label="Kỹ năng">
     <div class="wrap">
@@ -562,6 +753,17 @@ img{max-width:100%}
           <button class="btn alt" id="ultBtn">⚡ Kích hoạt</button>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SWORD DANCE -->
+  <section class="slide sS" data-id="sword" data-a1="#19f0ff" data-a2="#ff2e93" data-label="Kiếm vũ" aria-label="Kiếm vũ">
+    <canvas class="warpcv" id="swcv" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="tag rise">Sword Dance · Kéo để chém</span>
+      <h2 class="rise" style="--d:.1s">Kiếm vũ<br>tinh cầu</h2>
+      <div class="swscore" id="swScore">Điểm 0 · Combo ×0 · Trượt 0</div>
+      <p class="lead rise" style="--d:.25s">Kéo chuột hoặc ngón tay qua các quả cầu sao để chém đôi chúng. Chém liên tiếp để tăng combo.</p>
     </div>
   </section>
 
@@ -595,6 +797,36 @@ img{max-width:100%}
     </div>
   </section>
 
+  <!-- REFLEX -->
+  <section class="slide sR" data-id="reflex" data-a1="#ffd23f" data-a2="#19f0ff" data-label="Phản xạ" aria-label="Phản xạ">
+    <div class="wrap">
+      <span class="tag rise">Reflex Test · Chạm đúng nhịp</span>
+      <h2 class="rise" style="--d:.1s">Phản xạ<br>Thợ Săn Sao</h2>
+      <div class="cstat" id="rfStat">Điểm 0 · Combo ×0 · Perfect 0 · Trượt 0 · 0/16</div>
+      <div class="arena rise" style="--d:.25s" id="arena">
+        <div class="rfres" id="rfRes" hidden><b id="rfGrade">S</b><span class="cstat" id="rfMsg">Điểm 0</span></div>
+      </div>
+      <div class="row"><button class="btn" id="rfStart">▶ Bắt đầu</button><span class="mono">Chạm khi vòng ngoài khớp với tâm</span></div>
+    </div>
+  </section>
+
+  <!-- SUMMON -->
+  <section class="slide sU" data-id="summon" data-a1="#ffd23f" data-a2="#ff2e93" data-label="Triệu hồi" aria-label="Triệu hồi">
+    <div class="wrap">
+      <span class="tag rise">Gacha · Triệu hồi</span>
+      <h2 class="rise" style="--d:.1s">Cổng<br>triệu hồi</h2>
+      <div class="sumgrid">
+        <div class="portal rise" style="--d:.2s" id="portal" aria-hidden="true"><i class="pr p1"></i><i class="pr p2"></i><i class="pr p3"></i><span class="pcore"></span></div>
+        <div class="cardslot rise" style="--d:.3s">
+          <div class="scard" id="scard"><div class="sin"><div class="sface sback"><span aria-hidden="true">★</span></div><div class="sface sfront" id="sfront"></div></div></div>
+          <div class="sempty" id="sempty">Bấm "Triệu hồi" để gọi một chiến binh</div>
+        </div>
+      </div>
+      <div class="row"><button class="btn" id="sumBtn">✦ Triệu hồi</button><span class="cstat" id="sumStat">Lượt 0 · Bảo hiểm 0/10</span></div>
+      <div class="hist" id="hist" aria-label="Lịch sử triệu hồi"></div>
+    </div>
+  </section>
+
   <!-- 10 · CONSTELLATION -->
   <section class="slide sC" data-id="const" data-a1="#7a3cff" data-a2="#19f0ff" data-label="Chòm sao" aria-label="Chòm sao">
     <div class="wrap">
@@ -603,6 +835,39 @@ img{max-width:100%}
       <div class="cstat rise" style="--d:.2s" id="cstat">Chạm các ngôi sao theo thứ tự 1 → 7</div>
       <svg class="sky-svg rise" style="--d:.3s" id="skymap" viewBox="0 0 100 60" role="img" aria-label="Bản đồ sao gồm 7 ngôi sao"></svg>
       <div class="row"><button class="btn alt" id="cReset">↺ Chơi lại</button></div>
+    </div>
+  </section>
+
+  <!-- RADAR -->
+  <section class="slide sD" data-id="radar" data-a1="#19f0ff" data-a2="#19f0ff" data-label="Radar" aria-label="Radar">
+    <div class="wrap">
+      <span class="tag rise">Radar · Dò tín hiệu</span>
+      <h2 class="rise" style="--d:.1s">Quét<br>vũ trụ</h2>
+      <div class="radgrid">
+        <div class="radar rise" style="--d:.2s" id="radar">
+          <svg class="rg" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="18"/><path d="M50 4V96M4 50H96M17 17 83 83M83 17 17 83"/></svg>
+          <div class="sweep" id="sweep"></div>
+        </div>
+        <div class="bpanel rise" style="--d:.4s">
+          <div class="cstat" id="radStat">Phát hiện 0/7 · Thù địch 0</div>
+          <div class="sigInfo" id="sigInfo">Chờ tia quét đi qua, rồi chạm vào một tín hiệu để khóa mục tiêu.</div>
+          <div class="row"><button class="btn alt" id="radScan">↻ Quét lại</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANGA -->
+  <section class="slide sG" data-id="manga" data-a1="#ff2e93" data-a2="#ffd23f" data-label="Manga" aria-label="Trang manga">
+    <div class="wrap">
+      <span class="tag rise">Manga · Chạm vào khung truyện</span>
+      <div class="mpage rise" style="--d:.1s">
+        <div class="panel" data-snd="rumble" style="grid-area:a;--d:.3s;--rot:-4deg"><div class="pin pa"><span class="sfx" style="left:5%;top:6%">ゴゴゴゴ</span><span class="cap" style="left:4%;bottom:6%">Bầu trời nứt toạc.</span></div></div>
+        <div class="panel" data-snd="pop" style="grid-area:b;--d:.95s;--rot:5deg"><div class="pin pb"><svg class="mfig" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 60 40 96 50 60 60 50 96 40 60 4 50 40 40Z"/></svg><span class="bub" style="left:6%;top:6%">Mình sẽ không bỏ cuộc!</span></div></div>
+        <div class="panel" data-snd="slash" style="grid-area:c;--d:1.6s;--rot:-3deg"><div class="pin pc"><svg class="mfig sl" viewBox="0 0 100 100" aria-hidden="true"><path d="M8 92 92 8" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M20 96 96 20" stroke="#19f0ff" stroke-width="2" stroke-linecap="round"/></svg><span class="sfx" style="right:6%;bottom:6%">ズバッ!</span></div></div>
+        <div class="panel" data-snd="zap" style="grid-area:d;--d:2.25s;--rot:4deg"><div class="pin pd"><svg class="mfig" viewBox="0 0 100 100" aria-hidden="true"><path d="M58 4 22 56H46L40 96 78 40H54Z"/></svg><span class="sfx" style="left:6%;top:6%">バリバリ</span></div></div>
+        <div class="panel" data-snd="boom" style="grid-area:e;--d:2.9s;--rot:-2deg"><div class="pin pe"><svg class="mfig eye" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" fill="#12031f" stroke="#ff2e3a" stroke-width="3"/><circle cx="50" cy="50" r="14" fill="#ff2e3a"/><rect x="47.5" y="38" width="5" height="24" rx="2.5" fill="#12031f"/></svg><span class="sfx" style="right:5%;top:6%">ドン!!</span><span class="cap" style="left:4%;bottom:6%">Hắc Nguyệt Vương xuất hiện.</span></div></div>
+      </div>
     </div>
   </section>
 
@@ -637,6 +902,46 @@ img{max-width:100%}
       <h2 class="rise" style="--d:.1s">Nhật ký<br>hệ thống</h2>
       <div class="term rise" style="--d:.25s"><div class="thead" aria-hidden="true"><i></i><i></i><i></i></div><div id="termOut" aria-live="polite"></div></div>
       <div class="row"><button class="btn alt" id="termRun">↻ Chạy lại</button></div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="slide sQ" data-id="quiz" data-a1="#9b6bff" data-a2="#ff2e93" data-label="Trắc nghiệm" aria-label="Trắc nghiệm tính cách">
+    <div class="wrap">
+      <span class="tag rise">Personality · Bạn là ai?</span>
+      <h2 class="rise" style="--d:.1s">Bạn thuộc<br>nhân vật nào?</h2>
+      <div class="quiz rise" style="--d:.25s" id="quiz"></div>
+    </div>
+  </section>
+
+  <!-- RANK RACE -->
+  <section class="slide sK" data-id="rank" data-a1="#ffd23f" data-a2="#19f0ff" data-label="Xếp hạng" aria-label="Bảng xếp hạng">
+    <div class="wrap">
+      <span class="tag rise">Ranking · Bình chọn</span>
+      <h2 class="rise" style="--d:.1s">Cuộc đua<br>yêu thích</h2>
+      <div class="rkhead rise" style="--d:.2s"><span class="cstat" id="rkWeek">Tuần 1 / 8</span><button class="btn alt" id="rkPlay">↺ Chạy lại</button></div>
+      <div class="race rise" style="--d:.3s" id="race" role="list" aria-label="Xếp hạng nhân vật"></div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="slide sN" data-id="count" data-a1="#ff2e93" data-a2="#ffd23f" data-label="Đếm ngược" aria-label="Đếm ngược">
+    <div class="kanji par" style="--p:20;left:-1%;bottom:2%;font-size:clamp(9rem,28vw,22rem)" aria-hidden="true">時</div>
+    <div class="wrap">
+      <span class="tag rise">Release · Ngày ra mắt</span>
+      <h2 class="rise" style="--d:.1s">Đếm ngược<br>mùa một</h2>
+      <div class="units rise" style="--d:.25s" id="units">
+        <div class="cu"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="bar" id="rD" cx="50" cy="50" r="44"/></svg><b id="cD">00</b><span>Ngày</span></div>
+        <div class="cu"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="bar" id="rH" cx="50" cy="50" r="44"/></svg><b id="cH">00</b><span>Giờ</span></div>
+        <div class="cu"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="bar" id="rM" cx="50" cy="50" r="44"/></svg><b id="cM">00</b><span>Phút</span></div>
+        <div class="cu"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="bar" id="rS" cx="50" cy="50" r="44"/></svg><b id="cS">00</b><span>Giây</span></div>
+      </div>
+      <p class="lead rise" style="--d:.35s">Tập đầu tiên lên sóng lúc 20:00, ngày 07/04/2027 (giờ Việt Nam).</p>
+      <div class="miles rise" style="--d:.45s">
+        <div class="mi"><div class="mono">01/2027</div><div>Công bố dàn diễn viên lồng tiếng</div></div>
+        <div class="mi"><div class="mono">03/2027</div><div>Trailer chính thức và nhạc mở đầu</div></div>
+        <div class="mi"><div class="mono">07/04/2027</div><div>Tập 1 lên sóng</div></div>
+      </div>
     </div>
   </section>
 
@@ -710,6 +1015,7 @@ var S=(function(){
 
   function ok(){return !!ac&&on&&ac.state==='running'}
   api.isOn=function(){return on};
+  api.tone=function(f,o){tone(f,o)};api.noise=function(o){noise(o)};
   api.ready=function(){return !!ac};
   api.unlock=function(){
     var C=window.AudioContext||window.webkitAudioContext;
@@ -964,7 +1270,7 @@ function drawFx(dt){
 /* =====================================================
    CUE SCHEDULER (sounds tied to each slide's animation)
    ===================================================== */
-var timers=[];
+var timers=[],extraStops=[],modeFns={};
 function at(ms,fn){var id=setTimeout(fn,ms);timers.push(id);return id}
 function clearCues(){timers.forEach(clearTimeout);timers=[]}
 function flash(){var f=$('#flash');f.classList.remove('go');void f.offsetWidth;f.classList.add('go')}
@@ -1030,7 +1336,7 @@ var warp=(function(){
     c.fillStyle=g;c.fillRect(0,0,w,h);
     c.lineCap='round';c.strokeStyle=n>.5?accent:'#fff';
     stars.forEach(function(s){
-      var pz=s.z+step*(1.2+n*5);s.z-=step;
+      var pz=s.z+speed*.00045*(1.2+n*5);s.z-=step;
       var x2=cx+s.x/s.z*sc*.12,y2=cy+s.y/s.z*sc*.12;
       if(s.z<=.02||x2<-50||x2>w+50||y2<-50||y2>h+50){var m=mk(false);s.x=m.x;s.y=m.y;s.z=1;return}
       var x1=cx+s.x/pz*sc*.12,y1=cy+s.y/pz*sc*.12;
@@ -1290,8 +1596,403 @@ var E={
     at(300,function(){S.fanfare()});
   }
 };
+/* =====================================================
+   EXTRA SOUNDS
+   ===================================================== */
+S.swish=function(v){v=Math.min(1,v||.5);S.noise({type:'highpass',f0:1500+v*3500,f1:6000+v*4000,dur:.12+v*.1,vol:.06+v*.16})};
+S.sonar=function(f){f=f||1200;S.tone(f,{to:f*.7,dur:.35,vol:.08});S.tone(f*2,{to:f*1.4,dur:.25,vol:.02,delay:.02})};
+S.rumble=function(){S.tone(48,{to:30,dur:1.1,type:'sawtooth',vol:.18,filter:260});S.noise({type:'lowpass',f0:300,f1:60,dur:1.1,vol:.2})};
+S.thunder=function(){S.noise({type:'lowpass',f0:1500,f1:80,dur:1.2,vol:.4,a:.02});S.tone(60,{to:28,dur:1,vol:.3})};
+S.shimmer=function(n){n=n||8;for(var i=0;i<n;i++)S.tone(1500+i*220+Math.random()*200,{delay:i*.05,dur:.3,vol:.035})};
+
+/* =====================================================
+   MODULE: eye (Tinh Nhan)
+   ===================================================== */
+var eye=(function(){
+  var svg=$('#eyeSvg'),pg=$('#pupilG'),mk=$('#marks'),lvEl=$('#eyeLv'),lv=1,ang=0,NS='http://www.w3.org/2000/svg';
+  var names=['Cấp 1 · Đơn Tinh','Cấp 2 · Song Tinh','Cấp 3 · Vạn Hoa Tinh Nhãn'];
+  function build(){
+    mk.innerHTML='';var n=lv*2;
+    for(var i=0;i<n;i++){
+      var p=document.createElementNS(NS,'path');
+      p.setAttribute('d','M0 -9 L2.4 -2.4 L9 0 L2.4 2.4 L0 9 L-2.4 2.4 L-9 0 L-2.4 -2.4Z');
+      p.setAttribute('transform','rotate('+(i/n*360)+' 100 100) translate(100 52)');
+      p.setAttribute('class','mk');mk.appendChild(p);
+    }
+    svg.setAttribute('class','lv'+lv);lvEl.textContent=names[lv-1];
+  }
+  function frame(dt){
+    ang+=(.5+lv*1.6)*dt;mk.setAttribute('transform','rotate('+ang.toFixed(2)+' 100 100)');
+    var r=svg.getBoundingClientRect();if(!r.width)return;
+    var dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2),d=Math.hypot(dx,dy)||1,m=Math.min(14,d/22);
+    pg.setAttribute('transform','translate('+(dx/d*m).toFixed(2)+' '+(dy/d*m).toFixed(2)+')');
+  }
+  function awaken(){
+    lv=lv%3+1;build();S.charge(.55);
+    setTimeout(function(){
+      S.boom(.9);S.shimmer(10);flash();fx.burst(1);
+      var r=svg.getBoundingClientRect();fx.ring(r.left+r.width/2,r.top+r.height/2,'#ff2e3a');fx.bolt();shake();
+    },520);
+  }
+  $('#eyeBtn').addEventListener('click',awaken);
+  modeFns.eye=frame;build();
+  return{reset:function(){lv=1;build()}};
+})();
+
+/* =====================================================
+   MODULE: sword dance
+   ===================================================== */
+var sword=(function(){
+  var cvs=$('#swcv'),c=cvs.getContext('2d'),sl=$('.sS'),sc=$('#swScore');
+  var w=0,h=0,trail=[],orbs=[],halves=[],score=0,combo=0,miss=0,down=false,spawnT=0,lastSwish=0;
+  function fit(){var d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;if(cvs.width!==Math.round(w*d)){cvs.width=Math.round(w*d);cvs.height=Math.round(h*d)}c.setTransform(d,0,0,d,0,0)}
+  function ui(){sc.textContent='Điểm '+score+' · Combo ×'+combo+' · Trượt '+miss}
+  function spawn(){
+    var s=Math.max(.6,Math.min(1.3,h/800)),r=rnd(26,40)*Math.max(.75,Math.min(1.2,w/1000));
+    orbs.push({x:rnd(.15,.85)*w,y:h+r,vx:rnd(-3.2,3.2)*(w/1000+.3),vy:-rnd(13,17)*Math.sqrt(s),r:r,hue:Math.random()<.5?330:185,hit:false});
+  }
+  function segDist(ax,ay,x1,y1,x2,y2){
+    var dx=x2-x1,dy=y2-y1,l=dx*dx+dy*dy,t=l?Math.max(0,Math.min(1,((ax-x1)*dx+(ay-y1)*dy)/l)):0;
+    return Math.hypot(ax-(x1+t*dx),ay-(y1+t*dy));
+  }
+  function cut(o,ang){
+    o.hit=true;score+=1+Math.floor(combo/5);combo++;
+    halves.push({x:o.x,y:o.y,vx:o.vx-3,vy:o.vy-2,r:o.r,rot:ang,vr:-.08,side:0,hue:o.hue,l:60},
+                {x:o.x,y:o.y,vx:o.vx+3,vy:o.vy-2,r:o.r,rot:ang,vr:.08,side:1,hue:o.hue,l:60});
+    var col=o.hue===330?'#ff2e93':'#19f0ff';
+    fx.sparks(o.x,o.y,16,[col,'#ffffff','#ffd23f'],6);
+    S.hit(Math.min(combo,12));S.note(combo%9+1);
+    if(combo%5===0){S.fanfare();fx.ring(o.x,o.y,'#ffd23f')}
+    ui();
+  }
+  sl.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;down=true;trail=[{x:e.clientX,y:e.clientY,t:performance.now()}]});
+  window.addEventListener('pointerup',function(){down=false});
+  window.addEventListener('pointercancel',function(){down=false});
+  window.addEventListener('pointermove',function(e){
+    if(!down||mode!=='sword')return;
+    var now=performance.now(),p={x:e.clientX,y:e.clientY,t:now},q=trail[trail.length-1];
+    trail.push(p);
+    if(q){
+      var dx=p.x-q.x,dy=p.y-q.y,sp=Math.hypot(dx,dy)/Math.max(1,now-q.t);
+      if(now-lastSwish>70&&sp>.4){lastSwish=now;S.swish(Math.min(1,sp/3))}
+      orbs.forEach(function(o){if(!o.hit&&segDist(o.x,o.y,q.x,q.y,p.x,p.y)<o.r)cut(o,Math.atan2(dy,dx))});
+    }
+  });
+  function draw(dt){
+    fit();c.clearRect(0,0,w,h);
+    spawnT-=dt*16.67;if(spawnT<=0){spawn();spawnT=rnd(450,900)}
+    var i;
+    for(i=orbs.length-1;i>=0;i--){
+      var o=orbs[i];o.x+=o.vx*dt;o.y+=o.vy*dt;o.vy+=.22*dt;
+      if(o.hit){orbs.splice(i,1);continue}
+      if(o.y>h+o.r*2&&o.vy>0){orbs.splice(i,1);miss++;combo=0;ui();continue}
+      var gr=c.createRadialGradient(o.x-o.r*.3,o.y-o.r*.3,o.r*.1,o.x,o.y,o.r);
+      gr.addColorStop(0,'#fff');gr.addColorStop(.4,'hsl('+o.hue+',100%,65%)');gr.addColorStop(1,'hsl('+o.hue+',100%,35%)');
+      c.shadowColor='hsl('+o.hue+',100%,60%)';c.shadowBlur=22;c.fillStyle=gr;c.beginPath();c.arc(o.x,o.y,o.r,0,6.2832);c.fill();
+    }
+    for(i=halves.length-1;i>=0;i--){
+      var hv=halves[i];hv.x+=hv.vx*dt;hv.y+=hv.vy*dt;hv.vy+=.25*dt;hv.rot+=hv.vr*dt;hv.l-=dt;
+      if(hv.l<=0||hv.y>h+80){halves.splice(i,1);continue}
+      c.save();c.translate(hv.x,hv.y);c.rotate(hv.rot);c.globalAlpha=Math.min(1,hv.l/30);
+      c.fillStyle='hsl('+hv.hue+',100%,60%)';c.shadowColor=c.fillStyle;c.shadowBlur=14;
+      c.beginPath();c.arc(0,0,hv.r,hv.side?Math.PI:0,hv.side?2*Math.PI:Math.PI);c.closePath();c.fill();c.restore();
+    }
+    c.shadowBlur=0;c.globalAlpha=1;
+    var now=performance.now();
+    trail=trail.filter(function(p){return now-p.t<260});
+    c.lineCap='round';c.shadowColor=accent;c.shadowBlur=18;
+    for(i=1;i<trail.length;i++){
+      var a=1-(now-trail[i].t)/260;
+      c.strokeStyle='rgba(255,255,255,'+Math.max(0,a)+')';c.lineWidth=2+a*8;
+      c.beginPath();c.moveTo(trail[i-1].x,trail[i-1].y);c.lineTo(trail[i].x,trail[i].y);c.stroke();
+    }
+    c.shadowBlur=0;
+  }
+  function start(){mode='sword';modeFns.sword=draw;trail=[];orbs=[];halves=[];score=0;combo=0;miss=0;spawnT=300;ui()}
+  extraStops.push(function(){down=false});
+  return{start:start};
+})();
+
+/* =====================================================
+   MODULE: reflex
+   ===================================================== */
+var reflex=(function(){
+  var arena=$('#arena'),res=$('#rfRes'),stat=$('#rfStat'),btn=$('#rfStart');
+  var TOTAL=16,spawned=0,score=0,combo=0,perfect=0,good=0,miss=0,ids=[],live=[];
+  function T(fn,ms){var id=setTimeout(fn,ms);ids.push(id);return id}
+  function clear(){ids.forEach(clearTimeout);ids=[];live.forEach(function(t){t.el.remove()});live=[];$$('.rfpop',arena).forEach(function(p){p.remove()})}
+  function ui(){stat.textContent='Điểm '+score+' · Combo ×'+combo+' · Perfect '+perfect+' · Trượt '+miss+' · '+spawned+'/'+TOTAL}
+  function popText(t,text,col){
+    var p=document.createElement('div');p.className='rfpop';p.textContent=text;
+    p.style.left=t.el.style.left;p.style.top=t.el.style.top;p.style.color=col;arena.appendChild(p);
+    setTimeout(function(){p.remove()},1000);
+  }
+  function drop(t){t.done=true;t.el.classList.add('out');var k=live.indexOf(t);if(k>-1)live.splice(k,1);setTimeout(function(){t.el.remove()},320)}
+  function judge(t){
+    if(t.done)return;
+    var dt=performance.now()-t.t0,err=Math.abs(dt-1100),r=t.el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+    if(err<110){perfect++;combo++;score+=300+combo*10;popText(t,'PERFECT','#ffd23f');S.note(Math.min(combo+2,10));S.pop(4);fx.sparks(x,y,26,['#ffd23f','#ffffff','#ff2e93'],7);fx.ring(x,y,'#ffd23f')}
+    else if(err<260){good++;combo++;score+=100+combo*5;popText(t,'GOOD','#19f0ff');S.pop(2);fx.sparks(x,y,12,['#19f0ff','#ffffff'],5)}
+    else{miss++;combo=0;popText(t,dt<1100?'SỚM':'TRỄ','#ff6b7a');S.bad()}
+    drop(t);ui();
+  }
+  function finish(){
+    var acc=(perfect+good*.6)/TOTAL,g=acc>.85?'S':acc>.7?'A':acc>.5?'B':'C';
+    $('#rfGrade').textContent=g;$('#rfMsg').textContent='Điểm '+score+' · Perfect '+perfect+'/'+TOTAL;
+    res.hidden=false;btn.textContent='↺ Chơi lại';btn.disabled=false;
+    if(g==='S'||g==='A'){S.fanfare();flash();fx.explode(W*.35,H*.35);fx.explode(W*.65,H*.35)}else S.pop(1);
+  }
+  function spawn(){
+    spawned++;
+    var el=document.createElement('button');el.className='tg';el.setAttribute('aria-label','Mục tiêu');
+    el.style.left=rnd(10,90).toFixed(1)+'%';el.style.top=rnd(16,84).toFixed(1)+'%';el.innerHTML='<i class="tg-ring"></i><b></b>';
+    var t={el:el,t0:performance.now(),done:false};
+    el.addEventListener('pointerdown',function(e){e.stopPropagation();judge(t)});
+    arena.appendChild(el);live.push(t);S.tick(spawned%8);
+    T(function(){if(!t.done){miss++;combo=0;popText(t,'TRƯỢT','#ff6b7a');S.bad();drop(t);ui()}},1360);
+    if(spawned<TOTAL)T(spawn,780);else T(finish,1700);
+    ui();
+  }
+  function zero(){spawned=0;score=0;combo=0;perfect=0;good=0;miss=0;res.hidden=true}
+  btn.addEventListener('click',function(){clear();zero();btn.disabled=true;S.charge(.5);ui();T(spawn,700)});
+  extraStops.push(function(){clear();btn.disabled=false});
+  return{reset:function(){clear();zero();btn.textContent='▶ Bắt đầu';btn.disabled=false;ui()}};
+})();
+
+/* =====================================================
+   MODULE: summon (gacha)
+   ===================================================== */
+var summon=(function(){
+  var btn=$('#sumBtn'),portal=$('#portal'),card=$('#scard'),front=$('#sfront'),empty=$('#sempty'),hist=$('#hist'),stat=$('#sumStat');
+  var pulls=0,pity=0,busyS=false;
+  var sig=[
+    'M50 4 60 40 96 50 60 60 50 96 40 60 4 50 40 40Z',
+    'M50 4 59 62 50 96 41 62Z M28 60h44v6H28Z',
+    'M58 4 22 56H46L40 96 78 40H54Z',
+    'M66 8A42 42 0 1 0 92 64 34 34 0 1 1 66 8Z',
+    'M50 8c10 14 30 18 38 30-12 2-20 10-22 24-6-8-12-8-16-8s-10 0-16 8c-2-14-10-22-22-24 8-12 28-16 38-30Z',
+    'M50 10 90 50 50 90 10 50Z',
+    'M50 6 90 28V72L50 94 10 72V28Z',
+    'M50 12A38 38 0 1 0 50 88 38 38 0 1 0 50 12ZM50 30A20 20 0 1 1 50 70 20 20 0 1 1 50 30Z'
+  ];
+  var pool={
+    SSR:[{n:'Aiko',r:'Tinh Quang Nữ Hoàng',s:0},{n:'Ren',r:'Hàn Phong Kiếm Thánh',s:1}],
+    SR:[{n:'Sora',r:'Lôi Vũ Xạ Thủ',s:2},{n:'Kaito',r:'Nguyệt Ảnh Pháp Sư',s:3},{n:'Miyu',r:'Hoa Anh Đào Y Sĩ',s:4}],
+    R:[{n:'Lính Tinh Tú',r:'Tiền đội',s:5},{n:'Thợ Săn Sao',r:'Du hành',s:6},{n:'Hộ Vệ Neo Kyōto',r:'Thủ thành',s:7}]
+  };
+  var col={SSR:'#ffd23f',SR:'#b46bff',R:'#4aa8ff'},stars={SSR:'★★★★★',SR:'★★★★',R:'★★★'};
+  function ui(){stat.textContent='Lượt '+pulls+' · Bảo hiểm '+pity+'/10'}
+  function reveal(rar,ch){
+    if(rar==='SSR'){S.boom(1.2);S.fanfare();S.shimmer(14);flash();shake();fx.burst(1.5);
+      [0,300,600].forEach(function(ms){setTimeout(function(){fx.explode(rnd(W*.2,W*.8),rnd(H*.2,H*.55));S.firework()},ms)})}
+    else if(rar==='SR'){S.power();S.shimmer(6);fx.burst(.8);fx.explode(W/2,H*.4)}
+    else{S.pop(2);S.note(5)}
+    var chip=document.createElement('span');chip.textContent=rar+' · '+ch.n;chip.style.color=col[rar];hist.insertBefore(chip,hist.firstChild);
+    while(hist.children.length>10)hist.removeChild(hist.lastChild);
+    setTimeout(function(){busyS=false;btn.disabled=false},900);
+  }
+  function pull(){
+    if(busyS)return;busyS=true;btn.disabled=true;pulls++;pity++;
+    var rar;if(pity>=10){rar='SSR'}else{var x=Math.random();rar=x<.07?'SSR':x<.35?'SR':'R'}
+    if(rar==='SSR')pity=0;
+    var list=pool[rar],ch=list[Math.floor(Math.random()*list.length)];
+    card.className='scard';empty.hidden=true;ui();
+    portal.classList.add('charging');S.charge(1.3);fx.burst(.5);
+    setTimeout(function(){
+      portal.classList.remove('charging');
+      front.innerHTML='<div class="stars">'+stars[rar]+'</div><svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="'+sig[ch.s]+'"/></svg><h3>'+ch.n+'</h3><p>'+ch.r+'</p><span class="rar">'+rar+'</span>';
+      card.className='scard r-'+rar+' show';
+      S.whoosh(false);fx.ring(W*.7,H*.45,col[rar]);
+      setTimeout(function(){card.classList.add('flipped');reveal(rar,ch)},600);
+    },1300);
+  }
+  btn.addEventListener('click',pull);
+  return{reset:function(){busyS=false;btn.disabled=false;card.className='scard';empty.hidden=false;portal.classList.remove('charging');ui()}};
+})();
+
+/* =====================================================
+   MODULE: radar
+   ===================================================== */
+var radar=(function(){
+  var box=$('#radar'),sweep=$('#sweep'),info=$('#sigInfo'),stat=$('#radStat'),ang=0,blips=[],found=0,hostile=0;
+  var names=['Hội Bóng Đêm','Tàn quân Hắc Nguyệt','Thương đoàn Tinh Giới','Biệt đội Astral','Mảnh sao vỡ','Tàu thăm dò','Tín hiệu lạ'];
+  function ui(){stat.textContent='Phát hiện '+found+'/'+blips.length+' · Thù địch '+hostile}
+  function lock(b){
+    blips.forEach(function(x){x.el.classList.remove('sel')});b.el.classList.add('sel');
+    info.innerHTML='<b>'+b.n+'</b><br>Khoảng cách: '+b.d+' AU · Trạng thái: '+(b.h?'<span class="bad">THÙ ĐỊCH</span>':'ĐỒNG MINH');
+    if(b.h)S.alarm();else{S.note(6);S.pop(3)}
+    var r=b.el.getBoundingClientRect();fx.ring(r.left+r.width/2,r.top+r.height/2,b.h?'#ff4a5a':'#19f0ff');
+  }
+  function ping(b){
+    if(!b.seen){b.seen=true;found++;if(b.h)hostile++;ui()}
+    b.el.classList.add('seen');b.el.classList.remove('ping');void b.el.offsetWidth;b.el.classList.add('ping');
+    S.sonar(b.h?600:1400);
+  }
+  function make(i){
+    var a=rnd(0,360),r=rnd(.2,.9),h=Math.random()<.5,el=document.createElement('button');
+    var b={a:a,r:r,h:h,n:names[i],d:(r*9.5).toFixed(1),seen:false,el:el};
+    el.className='blip '+(h?'bad':'ok');
+    el.style.left=(50+Math.sin(a*Math.PI/180)*r*46)+'%';el.style.top=(50-Math.cos(a*Math.PI/180)*r*46)+'%';
+    el.setAttribute('aria-label','Tín hiệu '+(i+1));
+    el.addEventListener('pointerdown',function(e){e.stopPropagation();lock(b)});
+    box.appendChild(el);return b;
+  }
+  function gen(){
+    $$('.blip',box).forEach(function(e){e.remove()});blips=[];found=0;hostile=0;
+    for(var i=0;i<7;i++)blips.push(make(i));
+    info.textContent='Chờ tia quét đi qua, rồi chạm vào một tín hiệu để khóa mục tiêu.';ui();
+  }
+  function frame(dt){
+    var prev=ang;ang=(ang+1.7*dt)%360;sweep.style.transform='rotate('+ang.toFixed(2)+'deg)';
+    var delta=(ang-prev+360)%360;
+    blips.forEach(function(b){var off=(b.a-prev+360)%360;if(off>0&&off<=delta)ping(b)});
+  }
+  $('#radScan').addEventListener('click',function(){gen();S.charge(.4)});
+  modeFns.radar=frame;
+  return{start:function(){mode='radar';gen()}};
+})();
+
+/* =====================================================
+   MODULE: manga
+   ===================================================== */
+var manga=(function(){
+  var panels=$$('.panel');
+  var snd={rumble:function(){S.rumble()},pop:function(){S.pop(3);S.note(4)},slash:function(){S.slash()},zap:function(){S.zap();S.thunder()},boom:function(){S.boom(1)}};
+  function hitP(p,x,y){
+    p.classList.remove('shk');void p.offsetWidth;p.classList.add('shk');
+    (snd[p.dataset.snd]||S.pop)();
+    if(x!=null)fx.sparks(x,y,16,['#ffffff','#ffd23f',accent],6);
+  }
+  panels.forEach(function(p){p.addEventListener('pointerdown',function(e){hitP(p,e.clientX,e.clientY)})});
+  return{enter:function(){panels.forEach(function(p,i){at(300+i*650,function(){(snd[p.dataset.snd]||S.pop)()})})}};
+})();
+
+/* =====================================================
+   MODULE: quiz
+   ===================================================== */
+var quiz=(function(){
+  var box=$('#quiz'),qi=0,sc=[0,0,0,0];
+  var chars=[
+    {n:'Aiko',r:'Thủ lĩnh · Tinh Quang',c:'#ff2e93',p:'M50 4 60 40 96 50 60 60 50 96 40 60 4 50 40 40Z',t:'Bạn nồng nhiệt, bướng bỉnh và luôn là người chạy đầu tiên. Cả đội đi theo bạn vì bạn không bao giờ bỏ ai lại phía sau.'},
+    {n:'Ren',r:'Kiếm sĩ · Hàn Phong',c:'#19f0ff',p:'M50 4 59 62 50 96 41 62Z M28 60h44v6H28Z',t:'Bạn điềm tĩnh và chính xác. Ít nói nhưng mỗi quyết định đều được cân nhắc kỹ, và đồng đội luôn tin ở bạn.'},
+    {n:'Sora',r:'Xạ thủ · Lôi Vũ',c:'#ffd23f',p:'M58 4 22 56H46L40 96 78 40H54Z',t:'Bạn nhanh nhẹn, hài hước và là chất keo của cả nhóm. Phản xạ của bạn đã cứu cả đội nhiều lần.'},
+    {n:'Kaito',r:'Pháp sư · Nguyệt Ảnh',c:'#9b6bff',p:'M66 8A42 42 0 1 0 92 64 34 34 0 1 1 66 8Z',t:'Bạn trầm lặng, bí ẩn và hiểu biết sâu. Bạn nhìn thấy những điều người khác bỏ lỡ.'}
+  ];
+  var Q=[
+    {q:'Một ngôi sao băng rơi xuống trước mặt bạn. Bạn làm gì?',a:['Chạy theo nó ngay','Đứng yên, quan sát hướng rơi','Chụp ảnh khoe cả nhóm','Ước một điều thầm kín']},
+    {q:'Bạn chọn vũ khí nào?',a:['Ngôi sao phát sáng','Thanh kiếm lạnh','Cung tia sét','Cuốn sách cổ']},
+    {q:'Điểm mạnh lớn nhất của bạn?',a:['Không bao giờ bỏ cuộc','Luôn bình tĩnh','Phản xạ cực nhanh','Biết nhiều điều bí mật']},
+    {q:'Cuối tuần lý tưởng của bạn?',a:['Một chuyến phiêu lưu mới','Luyện tập một mình','Tụ tập với bạn bè','Đọc sách dưới ánh trăng']}
+  ];
+  function result(){
+    var best=0;sc.forEach(function(v,i){if(v>sc[best])best=i});
+    var ch=chars[best];
+    var d=document.createElement('div');d.className='qres rise-in';d.style.setProperty('--c',ch.c);
+    d.innerHTML='<div class="qart"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="'+ch.p+'"/></svg></div><div><div class="mono">Bạn giống nhất với</div><h3>'+ch.n+'</h3><div class="mono">'+ch.r+'</div><p>'+ch.t+'</p><button class="btn alt" id="qAgain">↺ Làm lại</button></div>';
+    box.appendChild(d);
+    $('#qAgain').addEventListener('click',function(){reset();S.pop(2)});
+    S.fanfare();S.shimmer(10);flash();fx.explode(W*.3,H*.4);fx.explode(W*.7,H*.4);S.firework();
+  }
+  function render(){
+    box.innerHTML='';
+    var pr=document.createElement('div');pr.className='qprog';pr.innerHTML='<i style="width:'+(qi/Q.length*100)+'%"></i>';box.appendChild(pr);
+    if(qi>=Q.length){result();return}
+    var q=document.createElement('div');q.className='qq rise-in';q.textContent=(qi+1)+'/'+Q.length+' · '+Q[qi].q;box.appendChild(q);
+    var a=document.createElement('div');a.className='qa rise-in';
+    Q[qi].a.forEach(function(t,i){
+      var b=document.createElement('button');b.className='qb';b.textContent=t;
+      b.addEventListener('click',function(e){sc[i]++;S.pop(i);S.note(i*2+1);fx.sparks(e.clientX,e.clientY,14,null,5);qi++;S.whoosh(true);render()});
+      a.appendChild(b);
+    });
+    box.appendChild(a);
+  }
+  function reset(){qi=0;sc=[0,0,0,0];render()}
+  render();
+  return{reset:reset};
+})();
+
+/* =====================================================
+   MODULE: rank race
+   ===================================================== */
+var rank=(function(){
+  var race=$('#race'),wk=$('#rkWeek'),RH=52,w=0,timer=null,leader=-1,rows=[];
+  var data=[
+    {n:'Aiko',c:'#ff2e93',v:[40,52,66,80,95,110,128,150]},
+    {n:'Ren',c:'#19f0ff',v:[55,58,64,70,82,96,108,122]},
+    {n:'Sora',c:'#ffd23f',v:[30,45,62,78,90,98,104,111]},
+    {n:'Kaito',c:'#9b6bff',v:[20,28,40,58,76,98,118,140]},
+    {n:'Miyu',c:'#ff9d2e',v:[35,40,44,52,60,64,70,76]},
+    {n:'Hắc Nguyệt Vương',c:'#ff4a5a',v:[25,34,50,70,88,100,106,108]}
+  ];
+  data.forEach(function(d,i){
+    var el=document.createElement('div');el.className='rk';el.setAttribute('role','listitem');el.style.setProperty('--c',d.c);
+    el.style.transform='translateY('+i*RH+'px)';
+    el.innerHTML='<div class="nm"></div><div class="tr"><div class="bar3"></div><span class="vl"></span></div>';
+    $('.nm',el).textContent=d.n;race.appendChild(el);
+    rows.push({el:el,bar:$('.bar3',el),val:$('.vl',el)});
+  });
+  function step(k){
+    var vals=data.map(function(d){return d.v[k]}),max=Math.max.apply(null,vals);
+    var order=vals.map(function(v,i){return i}).sort(function(a,b){return vals[b]-vals[a]});
+    rows.forEach(function(r,i){
+      var pos=order.indexOf(i);
+      r.el.style.transform='translateY('+pos*RH+'px)';r.bar.style.width=(vals[i]/max*100)+'%';r.val.textContent=vals[i]+'K';
+      r.el.classList.toggle('lead',pos===0);
+    });
+    S.tick(k);wk.textContent='Tuần '+(k+1)+' / 8';
+    if(order[0]!==leader){if(leader!==-1){S.pop(5);S.note(8);fx.ring(W/2,H*.55,data[order[0]].c)}leader=order[0]}
+  }
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  function play(){
+    stop();w=0;leader=-1;step(0);
+    timer=setInterval(function(){
+      w++;
+      if(w>=8){stop();S.fanfare();flash();fx.explode(W*.3,H*.4);fx.explode(W*.7,H*.4);return}
+      step(w);
+    },1000);
+  }
+  $('#rkPlay').addEventListener('click',play);
+  step(0);
+  extraStops.push(stop);
+  return{play:play};
+})();
+
+/* =====================================================
+   MODULE: countdown
+   ===================================================== */
+var countdown=(function(){
+  var target=new Date(2027,3,7,20,0,0).getTime(),C=276.5,iv=null,lastS=-1;
+  var el={d:$('#cD'),h:$('#cH'),m:$('#cM'),s:$('#cS')},rg={d:$('#rD'),h:$('#rH'),m:$('#rM'),s:$('#rS')};
+  function p2(n){return (n<10?'0':'')+n}
+  function set(k,v,max,txt){
+    if(el[k].textContent!==txt){el[k].textContent=txt;el[k].classList.remove('flip');void el[k].offsetWidth;el[k].classList.add('flip')}
+    rg[k].style.strokeDashoffset=(C*(1-Math.min(1,v/max))).toFixed(1);
+  }
+  function upd(){
+    var ms=Math.max(0,target-Date.now()),s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sec=s%60;
+    set('d',d,365,String(d));set('h',h,24,p2(h));set('m',m,60,p2(m));set('s',sec,60,p2(sec));
+    if(sec!==lastS){lastS=sec;S.tone(1800,{dur:.03,vol:.025,type:'square',filter:2500})}
+  }
+  function stop(){if(iv){clearInterval(iv);iv=null}}
+  function start(){stop();lastS=-1;upd();iv=setInterval(upd,1000)}
+  extraStops.push(stop);
+  return{start:start};
+})();
+
+/* ===== enter cues for the new slides ===== */
+E.eye=function(){mode='eye';S.sonar(900);at(300,function(){S.shimmer(6)});eye.reset()};
+E.sword=function(){S.charge(.5);sword.start()};
+E.reflex=function(){S.whoosh(true);reflex.reset()};
+E.summon=function(){S.shimmer(8);summon.reset()};
+E.radar=function(){radar.start()};
+E.manga=function(){manga.enter()};
+E.quiz=function(){S.whoosh(true);quiz.reset()};
+E.rank=function(){at(700,rank.play)};
+E.count=function(){countdown.start()};
+
+
 function leave(){
-  clearCues();teaser.stop();warp.stop();music.stop();term.stop();
+  clearCues();teaser.stop();warp.stop();music.stop();term.stop();extraStops.forEach(function(f){f()});
 }
 function enter(i){
   var s=slides[i],id=s.dataset.id;
@@ -1369,7 +2070,7 @@ window.addEventListener('wheel',function(e){
 var tx=0,ty=0;
 window.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 window.addEventListener('touchend',function(e){
-  if(cur===3||cur===8)return; /* warp + boss use touch for gameplay */
+  var cid=slides[cur].dataset.id;if(cid==='warp'||cid==='boss'||cid==='sword'||cid==='reflex')return;
   var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4)dx<0?next():prev();
 },{passive:true});
@@ -1438,17 +2139,23 @@ function unlock(){
 $('#unlock').addEventListener('click',function(){unlock()});
 
 /* main loop */
+var rafId=0;
 function loop(now){
+  rafId=0;
   var dt=Math.min(40,now-last)/16.67;last=now;frame++;
   mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
   root.style.setProperty('--mx',mx.toFixed(3));root.style.setProperty('--my',my.toFixed(3));
   if(frame%20===1)accent=getComputedStyle(document.body).getPropertyValue('--a2').trim()||accent;
   drawFx(dt);
-  if(mode==='warp')warp.draw(dt);else if(mode==='music')music.draw(now);else if(mode==='term')term.draw();
-  if(!document.hidden)requestAnimationFrame(loop);
+  if(mode==='warp')warp.draw(dt);else if(mode==='music')music.draw(now);else if(mode==='term')term.draw();else if(modeFns[mode])modeFns[mode](dt,now);
+  if(!document.hidden)rafId=requestAnimationFrame(loop);
 }
-requestAnimationFrame(loop);
-document.addEventListener('visibilitychange',function(){if(!document.hidden){last=performance.now();requestAnimationFrame(loop)}});
+rafId=requestAnimationFrame(loop);
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden)return;
+  if(rafId)cancelAnimationFrame(rafId);
+  last=performance.now();rafId=requestAnimationFrame(loop);
+});
 
 /* start (supports #s5 style links) */
 var m=/^#s(\d+)$/.exec(location.hash||'');
